@@ -45,7 +45,7 @@ public class Cidade implements IOperacao {
 
     @Override
     public void cadastrar() {
-         String insert  = "insert into cidade(nome_cidade, codigo_ibge) "
+         String insert  = "insert into cidade(nome, cod_ibge) "
                 + "values('"+getNome()+"',"+getCodibge()+")";
          mysqStatement = ConexaoDB.getStatement();
          
@@ -73,7 +73,7 @@ public class Cidade implements IOperacao {
 
     }
     public List<Cidade> getListaCidadesModel() {
-        String select = "select nome_cidade, codigo_ibge from cidade";
+        String select = "select nome, cod_ibge from cidade";
         List<Cidade> listasCidadeDB = new ArrayList();
         mysqStatement = ConexaoDB.getStatement();
         try {
@@ -81,7 +81,7 @@ public class Cidade implements IOperacao {
             while (rs.next()){
                 Cidade cid = new Cidade();
                 cid.setCodibge(rs.getInt("cod_ibge"));
-                cid.setNome(rs.getString("nome_cidade"));
+                cid.setNome(rs.getString("nome"));
                 listasCidadeDB.add(cid);
             }
         } catch (SQLException ex) {

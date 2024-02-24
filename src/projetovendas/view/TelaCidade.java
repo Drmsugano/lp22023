@@ -133,9 +133,7 @@ public class TelaCidade extends javax.swing.JFrame {
        cidadeController.getCidade().setNome(jTFNomeCidade.getText());
        cidadeController.getCidade().setCodibge(Integer.parseInt(jTFCodigoIbge.getText()));
        cidadeController.cadastrar();
-        System.out.println("a cidade eh"+ cidadeController.getCidade());
         limpar();
-        System.out.println("a cidade eh"+ cidadeController.getCidade());
        exlcuir();
        
     }//GEN-LAST:event_jBCadastrarActionPerformed
