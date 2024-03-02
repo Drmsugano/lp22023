@@ -4,7 +4,10 @@
  */
 package projetovendas.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import projetovendas.interfaces.IOperacao;
+import java.sql.*;
 
 /**
  *

@@ -4,7 +4,10 @@
  */
 package projetovendas.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import projetovendas.controller.EnderecoController;
+import projetovendas.model.Cidade;
 
 /**
  *
@@ -13,7 +16,7 @@ import projetovendas.controller.EnderecoController;
 public class TelaEndereco extends javax.swing.JFrame {
     
     EnderecoController enderecoController;
-
+       List<Cidade> listaCidades = new ArrayList();
     /**
      * Creates new form TelaEndereco
      */
@@ -21,7 +24,10 @@ public class TelaEndereco extends javax.swing.JFrame {
         initComponents();
         enderecoController = new EnderecoController();
     }
-
+    
+      private void montaCombo() {
+        listaCidades = enderecoController.getListaCidades();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +84,11 @@ public class TelaEndereco extends javax.swing.JFrame {
         jLabel2.setText("Cidade");
 
         jCCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCCidadeActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Bairro");
 
@@ -148,6 +159,10 @@ public class TelaEndereco extends javax.swing.JFrame {
     private void jTLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTLogradouroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTLogradouroActionPerformed
+
+    private void jCCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCCidadeActionPerformed
 
     /**
      * @param args the command line arguments

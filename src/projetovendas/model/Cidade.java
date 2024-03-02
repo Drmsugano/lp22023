@@ -5,12 +5,16 @@
 package projetovendas.model;
 
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import projetovendas.interfaces.IOperacao;
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,8 +46,8 @@ public class Cidade implements IOperacao {
 
     @Override
     public void cadastrar() {
-         String insert  = "insert into cidade(nome_cidade, codigo_ibge) "
-                + "values('"+getNome()+"',"+getCodibge()+")";
+         String insert  = "insert into cidade(nome, cod_ibge) "
+                + "values('"+getNome().toUpperCase()+"',"+getCodibge()+")";
          mysqStatement = ConexaoDB.getStatement();
          
         try {
@@ -75,6 +79,22 @@ public class Cidade implements IOperacao {
         return "Cidade{" + "nome=" + nome + ", codibge=" + codibge + '}';
     }
     
-    
+     public List<Cidade> getListaCidadesModel() {
+        String select = "select nome, cod_ibge from cidade";
+        List<Cidade> listasCidadeDB = new ArrayList();
+        mysqStatement = ConexaoDB.getStatement();
+        try {
+            ResultSet rs =  mysqStatement.executeQuery(select);
+            while (rs.next()){
+                Cidade cid = new Cidade();
+                cid.setCodibge(rs.getInt("cod_ibge"));
+                cid.setNome(rs.getString("nome"));
+                listasCidadeDB.add(cid);
+            }
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        return listasCidadeDB;
+    }
 
 }

@@ -4,7 +4,9 @@
  */
 package projetovendas.controller;
 
+import java.util.List;
 import projetovendas.interfaces.IOperacao;
+import projetovendas.model.Cidade;
 import projetovendas.model.Endereco;
 
 /**
@@ -12,9 +14,15 @@ import projetovendas.model.Endereco;
  * @author aluno
  */
 public class EnderecoController implements IOperacao{
-    
+    private Cidade cidade;
     private Endereco endereco;
 
+    public EnderecoController() {
+        this.cidade = new Cidade();
+        this.endereco = new Endereco();
+    }
+
+    
     @Override
     public void cadastrar() {
     }
@@ -33,5 +41,7 @@ public class EnderecoController implements IOperacao{
     public void cancelar() {
       
     }
-    
+     public List<Cidade> getListaCidades(){
+        return cidade.getListaCidadesModel(); 
+    }
 }
