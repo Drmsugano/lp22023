@@ -5,10 +5,8 @@
 package projetovendas.model;
 
 import projetovendas.interfaces.IOperacao;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
+import java.sql.*;
 /**
  *
  * @author aluno
@@ -16,7 +14,7 @@ import java.sql.Statement;
 public class Endereco implements IOperacao{
     private String logradouro;
     private Cidade cidade;
-    
+    private Statement mysqStatement = null;
     //antonio cristiana isaac 
     private String bairro;
     
@@ -33,7 +31,6 @@ public class Endereco implements IOperacao{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
     }
 
     @Override

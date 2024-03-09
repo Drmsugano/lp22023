@@ -30,7 +30,6 @@ public class TelaEndereco extends javax.swing.JFrame {
 
     private void montaCombo() {
         cidades = enderecoController.getListaCidade();
-
         for (Cidade cid : cidades) {
             jCCidade.addItem(cid.getNome());
         }
@@ -92,9 +91,11 @@ public class TelaEndereco extends javax.swing.JFrame {
 
         jLabel2.setText("Cidade");
 
-        jCCidade.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCCidadeItemStateChanged(evt);
+
+        jCCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado" }));
+        jCCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCCidadeActionPerformed(evt);
             }
         });
 
@@ -107,21 +108,23 @@ public class TelaEndereco extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jTLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBCadastrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTbairro, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCCidade, javax.swing.GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE)))
+                        .addComponent(jCCidade, javax.swing.GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBCadastrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBCancelar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBExcluir))
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,6 +173,13 @@ public class TelaEndereco extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTLogradouroActionPerformed
 
+
+   
+    
+    private void jCCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCidadeActionPerformed
+     
+    }//GEN-LAST:event_jCCidadeActionPerformed
+=======
     private void jCCidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCCidadeItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             System.out.println(cidades.get(jCCidade.getSelectedIndex()));
@@ -177,6 +187,7 @@ public class TelaEndereco extends javax.swing.JFrame {
             enderecoController.setCidade(cidadeModel);
         }
     }//GEN-LAST:event_jCCidadeItemStateChanged
+
 
     /**
      * @param args the command line arguments

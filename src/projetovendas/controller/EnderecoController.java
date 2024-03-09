@@ -14,7 +14,7 @@ import projetovendas.model.Endereco;
  * @author aluno
  */
 public class EnderecoController implements IOperacao{
-    
+    private Cidade cidade;
     private Endereco endereco;
     private Cidade cidade;
 
@@ -26,6 +26,12 @@ public class EnderecoController implements IOperacao{
     
     
 
+    
+    public EnderecoController() {
+        this.cidade = new Cidade();
+        this.endereco = new Endereco();
+    }
+    
     @Override
     public void cadastrar() {
         endereco.setCidade(cidade);
@@ -46,6 +52,31 @@ public class EnderecoController implements IOperacao{
     public void cancelar() {
       
     }
+
+    public List<Cidade> getListaCidade() {
+        return cidade.getCidades();
+    }
+
+    public EnderecoController(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public EnderecoController(Cidade cidade) {
+        this.cidade = cidade;
+    }
+    
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
     
     public List<Cidade> getListaCidade() {
         return cidade.getCidades();
