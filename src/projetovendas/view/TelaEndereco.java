@@ -4,15 +4,20 @@
  */
 package projetovendas.view;
 
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.List;
 import projetovendas.controller.EnderecoController;
+import projetovendas.model.Cidade;
 
 /**
  *
  * @author aluno
  */
 public class TelaEndereco extends javax.swing.JFrame {
-    
+
     EnderecoController enderecoController;
+    List<Cidade> cidades = new ArrayList();
 
     /**
      * Creates new form TelaEndereco
@@ -20,6 +25,15 @@ public class TelaEndereco extends javax.swing.JFrame {
     public TelaEndereco() {
         initComponents();
         enderecoController = new EnderecoController();
+        montaCombo();
+    }
+
+    private void montaCombo() {
+        cidades = enderecoController.getListaCidade();
+        for (Cidade cid : cidades) {
+            jCCidade.addItem(cid.getNome());
+        }
+
     }
 
     /**
@@ -77,7 +91,7 @@ public class TelaEndereco extends javax.swing.JFrame {
 
         jLabel2.setText("Cidade");
 
-        jCCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado" }));
         jCCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCCidadeActionPerformed(evt);
@@ -93,21 +107,23 @@ public class TelaEndereco extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jTLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBCadastrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTbairro, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCCidade, javax.swing.GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE)))
+                        .addComponent(jCCidade, javax.swing.GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBCadastrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBCancelar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBExcluir))
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,24 +154,27 @@ public class TelaEndereco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-      
-
+        enderecoController.getEndereco().setBairro(jTbairro.getText());
+        enderecoController.getEndereco().setLogradouro(jTLogradouro.getText());
+        enderecoController.cadastrar();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-      
+
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
-        
+
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jTLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTLogradouroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTLogradouroActionPerformed
 
+   
+    
     private void jCCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCidadeActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jCCidadeActionPerformed
 
     /**
