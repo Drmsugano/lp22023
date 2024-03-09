@@ -5,6 +5,7 @@
 package projetovendas.model;
 
 import projetovendas.interfaces.IOperacao;
+
 import java.sql.*;
 /**
  *
@@ -16,6 +17,8 @@ public class Endereco implements IOperacao{
     private Statement mysqStatement = null;
     //antonio cristiana isaac 
     private String bairro;
+    
+      private Statement mysqStatement = null;
 
     @Override
     public void cadastrar() {

@@ -56,7 +56,7 @@ public class TelaEndereco extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTbairro = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +90,7 @@ public class TelaEndereco extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Cidade");
+
 
         jCCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado" }));
         jCCidade.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +158,7 @@ public class TelaEndereco extends javax.swing.JFrame {
         enderecoController.getEndereco().setBairro(jTbairro.getText());
         enderecoController.getEndereco().setLogradouro(jTLogradouro.getText());
         enderecoController.cadastrar();
+
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
@@ -171,11 +173,21 @@ public class TelaEndereco extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTLogradouroActionPerformed
 
+
    
     
     private void jCCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCidadeActionPerformed
      
     }//GEN-LAST:event_jCCidadeActionPerformed
+=======
+    private void jCCidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCCidadeItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            System.out.println(cidades.get(jCCidade.getSelectedIndex()));
+            Cidade cidadeModel = cidades.get(jCCidade.getSelectedIndex());
+            enderecoController.setCidade(cidadeModel);
+        }
+    }//GEN-LAST:event_jCCidadeItemStateChanged
+
 
     /**
      * @param args the command line arguments

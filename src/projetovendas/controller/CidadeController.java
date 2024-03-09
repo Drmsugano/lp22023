@@ -4,21 +4,21 @@
  */
 package projetovendas.controller;
 
+import java.util.List;
 import projetovendas.interfaces.IOperacao;
 import projetovendas.model.Cidade;
-
 
 /**
  *
  * @author aluno
  */
-public class CidadeController implements IOperacao{
-    
+public class CidadeController implements IOperacao {
+
     private Cidade cidade;
 
     @Override
     public void cadastrar() {
-       cidade.cadastrar();
+        cidade.cadastrar();
     }
 
     @Override
@@ -43,7 +43,10 @@ public class CidadeController implements IOperacao{
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-    
-    
-    
+
+    public List<Cidade> getListaCidade() {
+        return cidade.getCidades();
+
+    }
+
 }

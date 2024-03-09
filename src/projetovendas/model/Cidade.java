@@ -4,11 +4,13 @@
  */
 package projetovendas.model;
 
-
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import projetovendas.interfaces.IOperacao;
 
+
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,10 +24,10 @@ public class Cidade implements IOperacao {
     private int idCidade;
     private String nome;
     private int codibge;
-    
+    private int idCidade;
+
     private Statement mysqStatement = null;
 
-   
     public String getNome() {
         return nome;
     }
@@ -42,19 +44,25 @@ public class Cidade implements IOperacao {
         this.codibge = codibge;
     }
 
+    public int getId_cidade() {
+        return idCidade;
+    }
+
+    public void setId_cidade(int id_cidade) {
+        this.idCidade = id_cidade;
+    }
+
     @Override
     public void cadastrar() {
          String insert  = "insert into cidade(nome, cod_ibge) "
                 + "values('"+getNome()+"',"+getCodibge()+")";
          mysqStatement = ConexaoDB.getStatement();
-         
         try {
             mysqStatement.executeUpdate(insert);
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
-         
-       
+
     }
 
     @Override
@@ -94,8 +102,9 @@ public class Cidade implements IOperacao {
     }
     @Override
     public String toString() {
-        return "Cidade{" + "nome=" + nome + ", codibge=" + codibge + '}';
+        return "Cidade{" + "nome=" + nome + ", codibge=" + codibge + ", idCidade=" + idCidade + ", mysqStatement=" + mysqStatement + '}';
     }
+
 
      public int getId_cidade() {
         return idCidade;
@@ -104,7 +113,6 @@ public class Cidade implements IOperacao {
     public void setId_cidade(int id_cidade) {
         this.idCidade = id_cidade;
     }
-    
     
 
 }
